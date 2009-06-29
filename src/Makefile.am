@@ -49,4 +49,4 @@ dist_vapi_DATA = \
 				 butter-1.0.vapi \
 				 $(NULL)
 
-EXTRA_DIST += $(libbutter_la_VALASOURCES) butter-1.0.vapi butter.vala.stamp
+EXTRA_DIST = $(libbutter_la_VALASOURCES) butter-1.0.vapi butter.vala.stamp
