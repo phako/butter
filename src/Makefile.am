@@ -30,7 +30,12 @@ butterinclude_HEADERS = \
 						$(NULL)
 
 butter-1.0.vapi butter.vala.stamp: $(libbutter_la_VALASOURCES)
-	$(VALAC) -C --basedir $(top_srcdir) --library butter-1.0 $^
+	$(VALAC) -C \
+		--basedir $(top_srcdir) \
+		--pkg gee-1.0 \
+		--pkg cstuff \
+		--vapidir $(top_srcdir) \
+		--library butter-1.0 $^
 	touch $@
 
 libbutter_la_LIBADD = \
