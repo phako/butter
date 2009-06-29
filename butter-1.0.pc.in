@@ -1,0 +1,12 @@
+prefix=@exec_prefix@
+libdir=@libdir@
+includedir=@includedir@
+datarootdir=@datarootdir@
+datadir=@datadir@
+
+Name: libbutter
+Description: GLib utilites library
+Version: @VERSION@
+Requires: glib-2.0 gobject-2.0 gee-1.0
+Libs: -L${libdir} -lbutter
+Cflags: -I${includedir}/butter-1.0

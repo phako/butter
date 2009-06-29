@@ -1,0 +1,33 @@
+AC_INIT([libbutter], [0.1], [mail@jensge.org], [libbutter])
+AC_CONFIG_SRCFIR([Makefile.am])
+AC_CONFIG_HEADERS([config.h])
+AM_INIT_AUTOMAKE([dist-bzip2])
+
+AC_PROG_CC
+AM_PROG_CC_C_O
+AC_DISABLE_STATIC
+AM_PROG_LIBTOOL
+
+AC_PATH_PROC(VALAC, valac, valac)
+AC_SUBST(VALAC)
+
+AC_SUBST(CFLAGS)
+AC_SUBST(CPPFLAGS)
+AC_SUBST(LDFLAGS)
+
+GLIB_REQUIRED=2.10
+GEE_REQUIRED=0.1
+PKG_CHECK_MODULES(GLIB, glib-2.0 >= $GLIB_REQUIRED gobject-2.0 >=
+                  GLIB_REQUIRED gio-2.0 >= GLIB_REQUIRED)
+AC_SUBST(GLIB_CFLAGS)
+AC_SUBST(GLIB_LIBS)
+
+PKG_CHECK_MODULES(GEE, gee-1.0 => $GEE_REQUIRED)
+AC_SUBST(GEE_CFLAGS)
+AC_SUBST(GEE_FLAGS)
+
+AC_CONFIG_FILES([Makefile
+                 butter-1.0.pc
+                 src/Makefile])
+
+AC_OUTPUT
