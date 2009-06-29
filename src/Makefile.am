@@ -3,7 +3,7 @@ NULL =
 AM_CPPFLAGS = \
 			  -I$(top_srcdir) \
 			  $(GLIB_CFLAGS) \
-			  $(GEE_FLAGS) \
+			  $(GEE_CFLAGS) \
 			  $(NULL)
 
 BUILT_SOURCES = butter.vala.stamp
@@ -23,18 +23,19 @@ libbutter_la_SOURCES = \
 					   butter.h \
 					   $(NULL)
 
-butterincludedir = $(includedir)/butter-1.0/butter
+butterincludedir = $(includedir)/butter-1.0
 
 butterinclude_HEADERS = \
 						butter.h \
 						$(NULL)
 
 butter-1.0.vapi butter.vala.stamp: $(libbutter_la_VALASOURCES)
-	$(VALAC) -C \
+	$(VALAC) -C -H butter.h \
 		--basedir $(top_srcdir) \
+		--pkg gio-2.0 \
 		--pkg gee-1.0 \
 		--pkg cstuff \
-		--vapidir $(top_srcdir) \
+		--vapidir $(top_srcdir)/src \
 		--library butter-1.0 $^
 	touch $@
 
