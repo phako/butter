@@ -22,7 +22,7 @@
  * version 2 of the License, or (at your option) any later version.
  */
 
-public class FilesystemWalker : Object {
+public class Butter.FilesystemWalker : Object {
     private Queue<File> file_queue;
     private Cancellable cancellable;
 

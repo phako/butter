@@ -24,7 +24,7 @@
 
 using Gee;
 
-public class AggregatedFileMonitor : Object {
+public class Butter.AggregatedFileMonitor : Object {
     private Cancellable cancellable;
     HashMap<File, FileMonitor> monitors;
 
