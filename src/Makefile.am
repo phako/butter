@@ -34,8 +34,6 @@ butter-1.0.vapi butter.vala.stamp: $(libbutter_la_VALASOURCES)
 		--basedir $(top_srcdir) \
 		--pkg gio-2.0 \
 		--pkg gee-1.0 \
-		--pkg cstuff \
-		--vapidir $(top_srcdir)/src \
 		--library butter-1.0 $^
 	touch $@
 
