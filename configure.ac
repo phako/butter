@@ -18,8 +18,16 @@ VALA_REQUIRED=0.7.5
 GLIB_REQUIRED=2.10
 GEE_REQUIRED=0.1
 
-AC_ARG_ENABLE(vala, [--enable-vala enable checks for vala],,enable_vala=no)
+PKG_CHECK_MODULES(GLIB, [glib-2.0 >= $GLIB_REQUIRED gobject-2.0 >=
+                  $GLIB_REQUIRED gio-2.0 >= $GLIB_REQUIRED])
+AC_SUBST(GLIB_CFLAGS)
+AC_SUBST(GLIB_LIBS)
 
+PKG_CHECK_MODULES(GEE, [gee-1.0 >= $GEE_REQUIRED])
+AC_SUBST(GEE_CFLAGS)
+AC_SUBST(GEE_FLAGS)
+
+AC_ARG_ENABLE(vala, [  --enable-vala    enable checks for vala],,enable_vala=no)
 if test x$enable_vala = xyes ; then
     PKG_CHECK_MODULES(VALA, [vala-1.0 >= $VALA_REQUIRED])
 
@@ -30,15 +38,6 @@ if test x$enable_vala = xyes ; then
         AC_MSG_ERROR([Cannot find the "valac" compiler in your path])
     fi
 fi
-
-PKG_CHECK_MODULES(GLIB, glib-2.0 >= $GLIB_REQUIRED gobject-2.0 >=
-                  $GLIB_REQUIRED gio-2.0 >= $GLIB_REQUIRED)
-AC_SUBST(GLIB_CFLAGS)
-AC_SUBST(GLIB_LIBS)
-
-PKG_CHECK_MODULES(GEE, gee-1.0 >= $GEE_REQUIRED)
-AC_SUBST(GEE_CFLAGS)
-AC_SUBST(GEE_FLAGS)
 
 AC_CONFIG_FILES([Makefile
                  butter-1.0.pc
